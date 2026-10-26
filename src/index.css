@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ============================================
+       CORES DA LOGO - ROTA PADRE DONIZETTI
+       Extraídas diretamente da logo oficial
+       ============================================ */
+    
+    /* Cores Principais */
+    --azul-escuro: #001350;
+    --azul-escuro-light: #001a66;
+    --azul-escuro-dark: #000d33;
+    
+    --azul-claro: #21bdf1;
+    --azul-claro-light: #5dd1f7;
+    --azul-claro-dark: #0a8fc4;
+    
+    /* Cores de Apoio */
+    --azul-medio: #0a3d8f;
+    --azul-ciano: #17a2b8;
+    
+    /* Cores Neutras */
+    --branco: #ffffff;
+    --cinza-claro: #f5f7fa;
+    --cinza-medio: #e2e8f0;
+    --cinza-texto: #64748b;
+    --cinza-escuro: #1e293b;
+    
+    /* Cores de Destaque (complementares ao azul) */
+    --dourado: #c9a227;
+    --dourado-claro: #f4d03f;
+    
+    /* ============================================
+       SHADCN THEME VARIABLES
+       ============================================ */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 224 76% 33%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 45 80% 52%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 224 76% 33%;
+    --radius: 0.625rem;
+    
+    /* ============================================
+       ANIMAÇÃO EASINGS
+       ============================================ */
+    --ease-spiritual: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-path: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-reverence: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-ascension: cubic-bezier(0.87, 0, 0.13, 1);
+    --ease-float: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Cinzel', serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-accent {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  /* Gradientes usando as cores da logo */
+  .text-gradient-blue {
+    background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-medio) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-gradient-blue {
+    background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-medio) 100%);
+  }
+  
+  .bg-gradient-cyan {
+    background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-claro-dark) 100%);
+  }
+  
+  .glassmorphism {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+  
+  .hover-lift {
+    transition: transform 0.3s var(--ease-path), box-shadow 0.3s var(--ease-reverence);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 19, 80, 0.15);
+  }
+  
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(33, 189, 241, 0.4);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(0, 19, 80, 0.3);
+  }
+  
+  .underline-grow {
+    position: relative;
+  }
+  
+  .underline-grow::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--azul-claro);
+    transition: width 0.3s var(--ease-spiritual), left 0.3s var(--ease-spiritual);
+  }
+  
+  .underline-grow:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* Botões com cores da logo */
+  .btn-primary {
+    @apply px-6 py-3 rounded-full font-medium transition-all;
+    background: var(--azul-escuro);
+    color: var(--branco);
+  }
+  
+  .btn-primary:hover {
+    background: var(--azul-medio);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 19, 80, 0.3);
+  }
+  
+  .btn-cyan {
+    @apply px-6 py-3 rounded-full font-medium transition-all;
+    background: var(--azul-claro);
+    color: var(--branco);
+  }
+  
+  .btn-cyan:hover {
+    background: var(--azul-claro-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(33, 189, 241, 0.4);
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 rounded-full font-medium transition-all border-2;
+    border-color: var(--azul-escuro);
+    color: var(--azul-escuro);
+    background: transparent;
+  }
+  
+  .btn-outline:hover {
+    background: var(--azul-escuro);
+    color: var(--branco);
+  }
+  
+  /* Cards */
+  .card-blue {
+    @apply rounded-2xl p-6;
+    background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-medio) 100%);
+    color: var(--branco);
+  }
+  
+  .card-light {
+    @apply rounded-2xl p-6;
+    background: var(--cinza-claro);
+    border: 1px solid var(--cinza-medio);
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  /* Cores de texto */
+  .text-brand-blue {
+    color: var(--azul-escuro);
+  }
+  
+  .text-brand-cyan {
+    color: var(--azul-claro);
+  }
+  
+  .text-brand-gray {
+    color: var(--cinza-texto);
+  }
+  
+  /* Backgrounds */
+  .bg-brand-blue {
+    background-color: var(--azul-escuro);
+  }
+  
+  .bg-brand-cyan {
+    background-color: var(--azul-claro);
+  }
+  
+  .bg-brand-light {
+    background-color: var(--cinza-claro);
+  }
+}
+
+/* Scrollbar Styling com cores da marca */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cinza-claro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--azul-escuro);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--azul-medio);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
